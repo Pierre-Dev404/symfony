@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+.article{
+   float:left;
+    width:33.33%;
+    border: 2px solid black;
+}
+.titre{
+    text-align:center;
+    color:blue;
+}
+.article_img{
+    width:90%;
+}
+.article_img:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.center{
+    text-align: center;
+}
+.text{
+    text-align: center;
+    padding: 10px;
+}
+.titrePrincipal{
+    text-align:center;
+}
