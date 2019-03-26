@@ -1,0 +1,14 @@
+{% for toto in article %}
+    <article class="article">
+        <header>
+            <a href="{{ path("twig_single_article", {'id': toto.id}) }}">
+                <h1 class="titre">{{ toto.title |capitalize}}</h1> </a>
+            <div class="center">
+                <img class="article_img" src="{{ toto.img }}">
+            </div>
+        </header>
+        <div class="text">
+            <p>{{ toto.content }}</p>
+        </div>
+    </article>
+{% endfor %}

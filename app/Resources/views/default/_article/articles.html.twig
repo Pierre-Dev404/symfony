@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    {% for toto in listes %}
+
+        <div class ="{{ cycle(['even', 'odd'], loop.index) }}">
+            <div class="image">
+                <a href="{{ path("twig_single_exo", {'id': toto.id}) }}">
+                    <h2>{{ toto.title }} </h2>
+                    <img class="article_img" src="{{ toto.img }}">
+                </a>
+            </div>
+            <div class="text">
+                <p>{{ toto.content }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

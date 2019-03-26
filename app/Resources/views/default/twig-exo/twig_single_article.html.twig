@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+
+    <title>Document</title>
+</head>
+<body style="margin: 0px;">
+
+
+<nav class="NavMenu">
+    <div  class="Menu">
+            <a href="#"> Home </a>
+            <a href="#"> Articles</a>
+            <a href="#"> Contact</a>
+    </div>
+</nav>
+
+<h1 class="titrePrincipal">Choisir: Linux ou Windows</h1>
+
+<article class="article">
+        <header>
+            <h1 class="titre">{{ element.title | capitalize }}</h1>
+            <div class="center">
+                <img class="article_img" src="{{ element.img }}">
+            </div>
+        </header>
+        <div class="text">
+            <p>{{ element.content }}</p>
+        </div>
+</article>
+
+<h2>Vous aimeriez aussi : </h2>
+<aside class="aside_article">
+    {% include 'default/_article/_loop_articles.html.twig' %}
+</aside>
+
+
+<footer>
+    <img  class="footer" src="https://netgear.fr/images/WebsitePieces/footer-rbu.png">
+</footer>
+
+</body>
+</html>

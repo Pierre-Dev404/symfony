@@ -108,35 +108,37 @@ class DefaultController extends Controller
      * @Route("/moi/{page}", name="Moi")
      */
 
-    public function requestQueryParameterMoiAction($page){
-        $titre1 =" Mon super article de blog";
-        $titre2="Qu'estce qu'un bottin";
+    public function requestQueryParameterMoiAction($page)
+    {
+        $titre1 = " Mon super article de blog";
+        $titre2 = "Qu'estce qu'un bottin";
 
-        $contenu1 =" un super article";
-        $contenu2 ="et footix tu sais l'écrire";
+        $contenu1 = " un super article";
+        $contenu2 = "et footix tu sais l'écrire";
 
-        if (intval($page) === 1){
-            return new Response($titre1.':'.$contenu1);
-        } elseif (intval($page) === 2){
-            return new Response($titre2.':'.$contenu2);
+        if (intval($page) === 1) {
+            return new Response($titre1 . ':' . $contenu1);
+        } elseif (intval($page) === 2) {
+            return new Response($titre2 . ':' . $contenu2);
         }
     }
     /**
-    // * @Route("/twig", name="twig")
+     * // * @Route("/twig", name="twig")
      */
     //public function twigAction()
-   // {
-    //    return $this->render("default/twig_veginner.html.twig");
-   // }
+    // {
+    //    return $this->render("default/twig.html.twig");
+    // }
 
     /**
      * @Route("/twiger/{age}", name="twiger")
      */
-    public function TwigerAction($age){
-        if($age >= 18){
+    public function TwigerAction($age)
+    {
+        if ($age >= 18) {
             return $this->render("default/twiger.html.twig");
         } else {
-            return $this->render("default/twig_veginner.html.twig");
+            return $this->render("default/twig.html.twig");
         }
     }
 
@@ -144,10 +146,295 @@ class DefaultController extends Controller
      * @Route ("/twigPage/{age}", name="twigPage")
      */
 
-    public function twigPageAction($age){
-        return $this->render("default/twig-exo/twig_veginner.html.twig",
-        [
-            'age' => $age
-        ]);
+    public function twigPageAction($age)
+    {
+        $articles = ['article 1', 'article 2', 'article 3'];
+        return $this->render("default/twig-exo/twig.html.twig",
+            [
+                'age' => $age,
+                'Articles' => $articles
+            ]);
+    }
+
+    /**
+     * @Route ("/twig_page_2", name="twigPage2")
+     */
+    public function twig2PageAction()
+    {
+        $articles = [
+            [
+                'title' => 'titre de mon article 1',
+                'content' => 'contenu de mon article 1',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'title' => 'titre de mon article 2',
+                'content' => 'contenu de mon article 2',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'title' => 'titre de mon article 3',
+                'content' => 'contenu de mon article 3',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'title' => 'titre de mon article 4',
+                'content' => 'contenu de mon article 4',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ]
+        ];
+
+        return $this->render("default/twig-exo/twig2.html.twig",
+            [
+                'articles' => $articles
+            ]
+        );
+    }
+    /**
+     * @Route ("twig_article", name="twig_article")
+     */
+
+    public function twigBouclesArticleAction(){
+        $articles = [
+            [
+                'id' => 1,
+                'title' => 'titre de mon article 1',
+                'content' => 'contenu de mon article 1',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'titre de mon article 2',
+                'content' => 'contenu de mon article 2',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 3,
+                'title' => 'titre de mon article 3',
+                'content' => 'contenu de mon article 3',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 4,
+                'title' => 'titre de mon article 4',
+                'content' => 'contenu de mon article 4',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 5,
+                'title' => 'titre de mon article 5',
+                'content' => 'contenu de mon article 5',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 6,
+                'title' => 'titre de mon article 6',
+                'content' => 'contenu de mon article 6',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ]
+        ];
+
+
+
+        return $this->render("default/twig-exo/twig_boucles.html.twig",
+            [
+                'article' => $articles,
+            ]
+        );
+
+    }
+        /**
+         * @Route ("/twig_single_article/{id}", name="twig_single_article")
+         */
+        public function twigSingleArticleAction($id){
+            $articles = [
+                [
+                    'id' => 1,
+                    'title' => 'titre de mon article 1',
+                    'content' => 'contenu de mon article 1',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 2,
+                    'title' => 'titre de mon article 2',
+                    'content' => 'contenu de mon article 2',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 3,
+                    'title' => 'titre de mon article 3',
+                    'content' => 'contenu de mon article 3',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 4,
+                    'title' => 'titre de mon article 4',
+                    'content' => 'contenu de mon article 4',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 5,
+                    'title' => 'titre de mon article 5',
+                    'content' => 'contenu de mon article 5',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 6,
+                    'title' => 'titre de mon article 6',
+                    'content' => 'contenu de mon article 6',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ]
+            ];
+
+            $article =  $articles[$id-1];
+
+            return $this->render("default/twig-exo/twig_single_article.html.twig",
+                [
+                    'element' => $article,
+                    'article' => $articles
+
+                ]
+            );
+
+        }
+        /**
+         * @Route ("/json", name = "json")
+         */
+
+        public function jsonAction(){
+            // Je vais récupeer un fichier json, sur les serveurs de github
+            $json= file_get_contents('https://raw.githubusercontent.com/LearnWebCode/json-example/master/pets-data.json');
+            // comme je ne peux pas exploiter directement le json en PHP
+            // j'utilise la fonction nativde de php json_decode
+            // pour convertir le json en objet / array php
+            $jsonDecoded = json_decode($json);
+
+            // j'appelle un fichier twig et je lui passe un paramètre "jsonDecoded" qui contient notre json decodé en PHP
+                return $this->render('default/twig-exo/json.html.twig',
+                    [
+                        'jsonDecoded' => $jsonDecoded
+                    ]
+                );
+        }
+
+    /**
+     * @Route ("json/{id}", name="json_id")
+     */
+
+    public function jsonSingleAction($id){
+        $json = file_get_contents('https://raw.githubusercontent.com/LearnWebCode/json-example/master/pets-data.json');
+        $jsonDecoded = json_decode($json);
+        $goodId=$id-1;
+        $article=$jsonDecoded->pets[$goodId];
+
+        return $this->render("default/twig-exo/json_detail.html.twig",
+            [
+                'index' => $goodId,
+                'article' => $article
+            ]
+            );
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * @Route("/twig_exo" , name ="twig_exo")
+         */
+        public function twigExoAction(){
+            $listes = [
+                [
+                    'id' => 1,
+                    'title' => 'titre de mon article 1',
+                    'content' => 'contenu de mon article 1',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 2,
+                    'title' => 'titre de mon article 2',
+                    'content' => 'contenu de mon article 2',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ],
+                [
+                    'id' => 3,
+                    'title' => 'titre de mon article 3',
+                    'content' => 'contenu de mon article 3',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                    ],
+                [
+                    'id' => 4,
+                    'title' => 'titre de mon article 4',
+                    'content' => 'contenu de mon article 4',
+                    'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+                ]
+                ];
+
+            return $this->render('default/twig-exo/base.html.twig',
+            [
+                'listes' => $listes
+            ]
+            );
+        }
+
+        /**
+         * @Route("/twig_single_exo/{id}", name="twig_single_exo")
+         */
+    public function twigExoSingleAction($id){
+        $listes = [
+            [
+                'id' => 1,
+                'title' => 'titre de mon article 1',
+                'content' => 'contenu de mon article 1',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 2,
+                'title' => 'titre de mon article 2',
+                'content' => 'contenu de mon article 2',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 3,
+                'title' => 'titre de mon article 3',
+                'content' => 'contenu de mon article 3',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ],
+            [
+                'id' => 4,
+                'title' => 'titre de mon article 4',
+                'content' => 'contenu de mon article 4',
+                'img' => 'https://www.ginjfo.com/wp-content/uploads/2015/02/LinuxVsWindows.jpg'
+            ]
+        ];
+
+        $liste = $listes[$id-1];
+        return $this->render('default/twig-exo/exercice_single.html.twig',
+            [
+                'liste' => $liste,
+                'listes' => $listes
+            ]);
+
     }
 }

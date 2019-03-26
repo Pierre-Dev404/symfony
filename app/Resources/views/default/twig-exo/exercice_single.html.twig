@@ -12,22 +12,22 @@
 <body style="margin: 0px;">
 
 
-<nav class="NavMenu">
-    <div  class="Menu">
-        <a href="#"> Home </a>
-        <a href="#"> Articles</a>
-        <a href="#"> Contact</a>
+{% include '/_partiel/topbar.html.twig' %}
+
+<h1 class="titrePrincipal">Choisir: Linux ou Windows</h1>
+
+
+<div class="center">
+    <div class="image">
+            <img class="article_img" src="{{ liste.img }}">
     </div>
-</nav>
+    <div class="text">
+        <h2>{{ liste.title }}</h2>
+        <p>{{ liste.content }}</p>
+    </div>
+</div>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
-
-<footer>
-    <img  class="footer" src="https://netgear.fr/images/WebsitePieces/footer-rbu.png">
-</footer>
+{% include '/_partiel/footer.html.twig' %}
 
 </body>
 </html>

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <h1>Mes animaux préférés <3 <3 </h1>
+    {% for pet in jsonDecoded.pets %}
+        <div class ="{{ cycle(['even', 'odd'], loop.index) }}">
+            <a href="{{ path("json_id", {'id': loop.index}) }}">
+                <div class="image">
+                    <img src="{{ pet.photo }}" alt="">
+                </div>
+            </a>
+                    <div class="text">
+                        <p> Nom: {{ pet.name }}</p>
+                        <p>Espece: {{ pet.species }}</p>
+                        <p>Date de naissance: {{ pet.birthYear }}</p>
+                            {% if pet.favFoods is defined %}
+                                <p> Repas favoris:
+                                    {% for food in pet.favFoods %}
+                                        <i> {{ food }} </i>
+                                    {% endfor %}
+                                </p>
+                             {% endif %}
+                    </div>
+        </div>
+                {#
+                A l'interieur de chaque élément, j'ai un autre array. Donc je dois faire une nouvelle boucle.
+                Tous les éléments n'ont pas la clé favfood, donc avant de faire la boucle, je teste si la clé est définie.
+                #}
+
+
+    {% endfor %}
+{% endblock %}

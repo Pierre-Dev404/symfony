@@ -1,0 +1,18 @@
+{% extends "base2.html.twig" %}
+
+{% block content2 %}
+    <h1> Zoom sur mon animal </h1>
+<div class="imagedetail"> <img src="{{ article.photo }}" alt=""> </div>
+<div class="textdetail">
+    <p> Nom: {{ article.name }}</p>
+    <p>Espece: {{ article.species }}</p>
+    <p>Date de naissance: {{ article.birthYear }}</p>
+    {% if pet.favFoods is defined %}
+        <p> Repas favoris:
+            {% for food in pet.favFoods %}
+                <i> {{ food }} </i>
+            {% endfor %}
+        </p>
+    {% endif %}
+</div>
+ {% endblock %}

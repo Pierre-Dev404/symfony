@@ -10,6 +10,10 @@
 </head>
 <body style="margin: 0px;">
 
+{% for element in Articles %}
+    <p>{{ element }}</p>
+{% endfor %}
+
 {% if age > 18 %}
 
 <h1 class="titrePrincipal">Choisir: Linux ou Windows</h1>
